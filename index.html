@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Quản Lý Điểm - Nhóm 13</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>HỆ THỐNG QUẢN LÝ ĐIỂM SINH VIÊN</h1>
+        <p>Học viện Công nghệ Bưu chính Viễn thông - Thực hiện: Nhóm 13</p>
+    </header>
+
+    <nav class="nav-bar">
+        <button class="tab-btn active" onclick="openTab('tab-home', this)">Tổng quan</button>
+        <button class="tab-btn" onclick="openTab('tab-student', this)">Quản lý Sinh viên</button>
+        <button class="tab-btn" onclick="openTab('tab-grade', this)">Quản lý Điểm số</button>
+    </nav>
+
+    <div class="main-container">
+        
+        <div id="tab-home" class="tab-content active">
+            <div class="flex-header">
+                <h2>Báo cáo số liệu thống kê</h2>
+            </div>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <h3>15</h3>
+                    <p>Khoa & Viện</p>
+                </div>
+                <div class="stat-box">
+                    <h3>15</h3> <p>Lớp hành chính</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="total-students">15</h3>
+                    <p>Sinh viên</p>
+                </div>
+                <div class="stat-box">
+                    <h3>15</h3>
+                    <p>Môn học</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><b>Ghi chú:</b> Hệ thống đang kết nối và mô phỏng dữ liệu của lớp D25CQCC03-B. Các chức năng Thêm và Xóa sinh viên hoạt động trực tiếp trên giao diện này để phục vụ demo.</p>
+            </div>
+        </div>
+
+        <div id="tab-student" class="tab-content">
+            <div class="flex-header">
+                <h2>Danh sách Sinh viên</h2>
+                <button class="btn-add" onclick="showModal()">+ Thêm sinh viên</button>
+            </div>
+            <table class="simple-table">
+                <thead>
+                    <tr>
+                        <th>Mã SV</th>
+                        <th>Họ và Tên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>Quê Quán</th>
+                        <th>Mã Lớp</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="student-list">
+                    </tbody>
+            </table>
+        </div>
+
+        <div id="tab-grade" class="tab-content">
+            <div class="flex-header">
+                <h2>Bảng Điểm Môn: Cơ sở dữ liệu (INT1306)</h2>
+            </div>
+            <p style="margin-bottom: 15px; color: #555;">Công thức tính điểm tổng kết: 10% CC + 20% GK + 70% CK</p>
+            <table class="simple-table">
+                <thead>
+                    <tr>
+                        <th>Mã SV</th>
+                        <th>Họ Tên</th>
+                        <th>Chuyên Cần</th>
+                        <th>Giữa Kỳ</th>
+                        <th>Cuối Kỳ</th>
+                        <th>Điểm Hệ 10</th>
+                    </tr>
+                </thead>
+                <tbody id="grade-list">
+                    </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Thêm Sinh Viên Mới</h3>
+                <span class="close" onclick="hideModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <label>Mã SV:</label>
+                <input type="text" id="masv" placeholder="VD: B25DCCC999">
+                
+                <label>Họ và Tên:</label>
+                <input type="text" id="hoten">
+                
+                <label>Ngày Sinh:</label>
+                <input type="date" id="ngaysinh">
+                
+                <label>Giới Tính:</label>
+                <select id="gioitinh">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                
+                <label>Quê Quán:</label>
+                <input type="text" id="quequan">
+                
+                <label>Mã Lớp:</label>
+                <input type="text" id="malop" value="D25CQCC03-B">
+                
+                <button class="btn-save" onclick="addStudent()">Lưu dữ liệu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
